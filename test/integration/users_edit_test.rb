@@ -89,7 +89,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to edit_user_url(@user)
     assert session[:forwarding_url].blank?
-    
+  
     delete logout_path
     log_in_as(@user)
     assert_redirected_to @user
