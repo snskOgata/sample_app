@@ -26,9 +26,8 @@ User.create!(name:  "Example User",
                activated_at: Time.zone.now)
 end
 
-#ループの順番は、コンソール上の見た目のため
 users = User.order(:created_at).take(6)
-50.times do
+50.times do |n|
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+  users.each { |user| user.microposts.create!(content: content, created_at: (n+1).hours.ago) }
 end
